@@ -3,7 +3,7 @@ Workstation installer script to add applications, tools and fine tunes.
 
 Start with
 ```bash
-curl https://raw.githubusercontent.com/LaKing/fedora-install-workstation/master/install-workstation.sh | bash -
+curl https://raw.githubusercontent.com/LaKing/fedora-workstation/master/install-workstation.sh | bash -
 ```
 
 answer questions with yes or no - or leave the default value
