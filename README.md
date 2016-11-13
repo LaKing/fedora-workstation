@@ -1,5 +1,12 @@
 # fedora-install-workstation
 Workstation installer script to add applications, tools and fine tunes.
+
+Start with
+```bash
+curl https://raw.githubusercontent.com/LaKing/fedora-install-workstation/master/install-workstation.sh | bash -
+```
+
+answer questions with yes or no - or leave the default value
 ```
 The rpmfusion repo contains most of the packages that are needed on a proper workstation, to use proprietary software such as mp3 codecs. Recommended on a workstation.
 add rpmfusion?  [Y/n] yes
