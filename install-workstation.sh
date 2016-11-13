@@ -494,10 +494,6 @@ run wget -nc http://fc08.deviantart.net/fs31/f/2008/230/3/7/Leaves_of_the_forest
 #mogrify -brightness-contrast -30x-20 *.jpg 
 
 ## Standard Destop Wallpapers
-
-run wget -nc http://desktopography.net/exhibition/2012/ride/2560x1440/download
-run wget -nc http://desktopography.net/exhibition/2011/polaus/2560x1440/download
-run wget -nc http://desktopography.net/exhibition/2010/magnus/2560x1440/download
 run wget -nc http://www.justinmaller.com/img/projects/wallpaper/WP_Pump-2560x1440_00000.jpg
 
 ## Feel free to add your pictures here, and you can recommend your favorites too.
