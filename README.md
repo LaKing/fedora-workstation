@@ -2,7 +2,8 @@
 
 ## Start with
 ```bash
-curl https://raw.githubusercontent.com/LaKing/fedora-workstation/master/install-workstation.sh | bash -
+curl https://raw.githubusercontent.com/LaKing/fedora-workstation/master/install-workstation.sh > install-workstation.sh \
+&& bash install-workstation.sh
 ```
 
 ## Answer questions with yes or no - or leave the default value
