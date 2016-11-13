@@ -672,9 +672,11 @@ function install_kingsoft_office {
      MACHINE_TYPE="$(uname -m)"
     if [[ "${MACHINE_TYPE}" == 'x86_64' ]] 
     then
-          run dnf -y install "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.x86_64.rpm"
+          run wget "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.x86_64.rpm"
+          run dnf -y install wps-office-10.1.0.5672-1.a21.x86_64.rpm 
     else
-          run dnf -y install "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.i686.rpm"
+          run wget "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.i686.rpm"
+          run dnf -y install wps-office-10.1.0.5672-1.a21.i686.rpm
     fi
 }
 
