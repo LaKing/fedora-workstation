@@ -784,7 +784,7 @@ function install_virtualbox {
     if [ "$(rpm -qa kernel |sort -V |tail -n 1)" == "kernel-$(uname -r)" ]
     then
         msg "Kernel is OK! starting vboxdrv"
-        run /USER/lib/virtualbox/vboxdrv.sh setup
+        run /usr/lib/virtualbox/vboxdrv.sh setup
 
     else
         err "You are not running the latest kernel! Please reboot and start this command again."
