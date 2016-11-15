@@ -1,5 +1,5 @@
 ## fedora-install-workstation
-Asks a serious of questions, and runds the corresponding installs. Compatible with all recent versions of fedora-workstation.
+Asks some questions, and runds the corresponding installs. Compatible with all recent versions of fedora-workstation.
 
 ## Start with
 ```bash
