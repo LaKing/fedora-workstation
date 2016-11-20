@@ -133,7 +133,7 @@ then
 fi
 
 ## Any enemy in sight? :)
-#clear
+clear
 
 #if [[ $SUDO_USER ]]
 #then
@@ -349,6 +349,18 @@ vinagre localhost:1
 sudo mc' > "$bash_history_path"
 
     chmod 644 "$bash_history_path"
+}
+
+question disable_caps_lock "Caps lock is one of the biggest keys on the keybord. Annoying when pressed accidentally. Disable it?" no
+function disable_caps_lock {
+    run echo 'setxkbmap -option ctrl:nocaps' >> $USER_HOME/.bashrc
+    setxkbmap -option ctrl:nocaps
+}
+
+question disable_systemd_pager "Systemd uses a pager, that is unncessery when using a gui terminal." yes
+function disable_systemd_pager {
+    run echo 'export SYSTEMD_PAGER=' >> $USER_HOME/.bashrc
+    export SYSTEMD_PAGER=
 }
 
 
