@@ -578,7 +578,7 @@ ntc "Autologin set for $USER"
 
 question install_basic_system_tools 'There are some basic tools in a proper workstation, such a system monitoring tools, or the Disks tool, exfat support, gkrellm, filezilla, extra vnc clients, brasero, zip, rar, ..' yes
 function install_basic_system_tools {
-    run dnf -y install mc yumex yum-plugin-fastestmirror 
+    run dnf -y install mc
     run dnf -y install gkrellm wget 
     run dnf -y install gparted 
     run dnf -y install exfat-utils fuse-exfat 
