@@ -790,7 +790,7 @@ function install_virtualbox {
     dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
 
     curl http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo > /etc/yum.repos.d/virtualbox.repo
-    dnf -y install VirtualBox-5.0
+    dnf -y install VirtualBox-5.1
     usermod -a -G vboxusers "$USER"
     
     if [ "$(rpm -qa kernel |sort -V |tail -n 1)" == "kernel-$(uname -r)" ]
