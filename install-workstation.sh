@@ -780,6 +780,9 @@ function install_devtools {
     run dnf -y install nodejs
     run dnf -y install npm
     run dnf -y install ShellCheck
+    
+    # compilers
+    run dnf -y install gcc-c++
 
 }
 
