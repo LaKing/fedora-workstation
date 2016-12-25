@@ -1,6 +1,12 @@
 ## fedora-install-workstation
-Asks some questions, and runds the corresponding installs. Compatible with all recent versions of fedora-workstation.
+Asks some questions, and runds the corresponding installs. Compatible with fedora 25.
 
+## Prepare
+It is recommended to get your system up to date before running the installer.
+```bash
+sudo dnf -y update
+reboot
+```
 ## Start with
 ```bash
 curl https://raw.githubusercontent.com/LaKing/fedora-workstation/master/install-workstation.sh > install-workstation.sh \
