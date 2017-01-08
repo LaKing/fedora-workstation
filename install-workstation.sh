@@ -623,24 +623,24 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
     MACHINE_TYPE="$(uname -m)"
     if [[ "${MACHINE_TYPE}" == 'x86_64' ]]; then
       # 64-bit system
-      wget -nc --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jre-7u51-linux-x64.rpm"
-      dnf -y install jre-7u51-linux-x64.rpm
+      run wget -nc --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jre-7u51-linux-x64.rpm"
+      run dnf -y install jre-7u51-linux-x64.rpm
     else
       # 32-bit system
-      wget -nc --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jre-7u51-linux-i586.rpm"
-      dnf -y install jre-7u51-linux-i586.rpm
+      run wget -nc --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jre-7u51-linux-i586.rpm"
+      run dnf -y install jre-7u51-linux-i586.rpm
     fi
 
     ## java ##
-    alternatives --install /USER/bin/java java /USER/java/latest/jre/bin/java 20000
+    run alternatives --install /USER/bin/java java /USER/java/latest/jre/bin/java 20000
     ## javaws ##
-    alternatives --install /USER/bin/javaws javaws /USER/java/latest/jre/bin/javaws 20000
+    run alternatives --install /USER/bin/javaws javaws /USER/java/latest/jre/bin/javaws 20000
 
     ## Java Browser (Mozilla) Plugin 32-bit ##
-    alternatives --install /USER/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /USER/java/latest/jre/lib/i386/libnpjp2.so 20000
+    run alternatives --install /USER/lib/mozilla/plugins/libjavaplugin.so libjavaplugin.so /USER/java/latest/jre/lib/i386/libnpjp2.so 20000
 
     ## Java Browser (Mozilla) Plugin 64-bit ##
-    alternatives --install /USER/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /USER/java/latest/jre/lib/amd64/libnpjp2.so 20000
+    run alternatives --install /USER/lib64/mozilla/plugins/libjavaplugin.so libjavaplugin.so.x86_64 /USER/java/latest/jre/lib/amd64/libnpjp2.so 20000
 
     mkdir /opt/google/chrome/plugins
     cd /opt/google/chrome/plugins
@@ -723,9 +723,9 @@ function install_media_editors {
 question install_media_producer_tools "Compose multitrack soundtracks with Ardour,.. use mixxx to create your mixes." no
 function install_media_producer_tools {
  
-    dnf -y install ardour3
-    dnf -y install qjackctl a2jmidid alsa-tools ffado alsa-plugins-jack jack-audio-connection-kit-dbus vlc-plugin-jack pulseaudio-module-jack
-    dnf -y install mixxx
+    run dnf -y install ardour3
+    run dnf -y install qjackctl a2jmidid alsa-tools ffado alsa-plugins-jack jack-audio-connection-kit-dbus vlc-plugin-jack pulseaudio-module-jack
+    run dnf -y install mixxx
 }
 
 
@@ -734,15 +734,15 @@ question install_dropbox "Dropbox is a popular file sharing service." no
 function install_dropbox {
 
     #dnf -y install caja-dropbox 
-    dnf -y install nautilus-dropbox
+    run dnf -y install nautilus-dropbox
 
 }
 
 question install_chattools "Mumble is a useful free VOIP program, pidgin is a multiprotocol chat client." yes
 function install_chattools {
 
-    dnf -y install pidgin 
-    dnf -y install mumble 
+    run dnf -y install pidgin 
+    run dnf -y install mumble 
 
 }
 
