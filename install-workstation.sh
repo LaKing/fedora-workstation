@@ -789,12 +789,12 @@ function install_devtools {
 question install_virtualbox "Use virtualbox to emulate windows or any other operating system. (please reboot first, if you have update the kernel.)" no
 function install_virtualbox { 
 
-    dnf -y remove VirtualBox
-    dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
+    run dnf -y remove VirtualBox
+    run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
 
-    curl http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo > /etc/yum.repos.d/virtualbox.repo
-    dnf -y install VirtualBox-5.1
-    usermod -a -G vboxusers "$USER"
+    run curl http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo > /etc/yum.repos.d/virtualbox.repo
+    run dnf -y install VirtualBox-5.1
+    run usermod -a -G vboxusers "$USER"
     
     if [ "$(rpm -qa kernel |sort -V |tail -n 1)" == "kernel-$(uname -r)" ]
     then
@@ -807,7 +807,16 @@ function install_virtualbox {
 
 }
 
+question install_steam "Steam is a gaming platform. Installs rpmfusion nvidia drivers as well."
+function install_steam {
 
+    add_rpmfusion
+
+    run dnf -y install xorg-x11-drv-nvidia akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
+    run dnf -y install steam
+    run dnf -y install vulkan
+    run dnf -y install xorg-x11-drv-nvidia-libs.i686
+}
 
 
 
