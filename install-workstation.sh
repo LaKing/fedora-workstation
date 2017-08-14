@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Workstation installer script for Fedora (23 and up)
+# Workstation installer script for Fedora (23 and up) Latest fedora is 26.
 #
 # D250 Laboratories / D250.hu 2014-2016
 # Author: István király
@@ -834,12 +834,6 @@ function install_steam {
         fi
     fi
 }
-
-
-
-### Check for NVidia card
-## ok I disabled this here. Maybe use this guide https://www.if-not-true-then-false.com/2015/fedora-nvidia-guide/
-## later I might re-enble it, but this seems to be outdated now. ...
 
 ## Finalize will do the job!
 finalize
