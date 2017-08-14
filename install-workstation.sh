@@ -812,7 +812,7 @@ function install_steam {
 
     add_rpmfusion
 
-    run dnf -y install xorg-x11-drv-nvidia akmod-nvidia "kernel-devel-uname-r == $(uname -r)"
+    run dnf -y install xorg-x11-drv-nvidia akmod-nvidia kernel-devel
     run dnf -y install steam
     run dnf -y install vulkan
     run dnf -y install xorg-x11-drv-nvidia-libs.i686
