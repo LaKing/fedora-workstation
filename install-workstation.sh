@@ -812,10 +812,20 @@ function install_steam {
 
     add_rpmfusion
 
-    run dnf -y install xorg-x11-drv-nvidia akmod-nvidia kernel-devel
     run dnf -y install steam
     run dnf -y install vulkan
-    run dnf -y install xorg-x11-drv-nvidia-libs.i686
+    
+    if lspci | grep -E "VGA|3D" | grep NVIDIA
+    then
+        echo "You appear to have an Nvidia card."
+        if glxinfo | grep 'server glx vendor string: NVIDIA Corporation'
+        then
+            echo "It appears to be installed already."
+        else
+            run dnf -y install xorg-x11-drv-nvidia akmod-nvidia kernel-devel
+            run dnf -y install xorg-x11-drv-nvidia-libs.i686
+        fi
+    fi
 }
 
 
