@@ -728,7 +728,12 @@ function install_media_producer_tools {
     run dnf -y install mixxx
 }
 
+question install_spotify "Spotify is a music-streaming service, would you like to install the client?" no
+function install_spotify {
 
+    run dnf config-manager --add-repo=https://negativo17.org/repos/fedora-spotify.repo
+    run dnf -y install spotify-client
+}
 
 question install_dropbox "Dropbox is a popular file sharing service." no
 function install_dropbox {
@@ -747,11 +752,13 @@ function install_chattools {
 }
 
 
-question install_skype "Skype is bought by MS, however a lot of people use it, and it might be need to stay connected. Currently, the installation process will ask for the root password." yes
+question install_skype "Install Skype, the chat program?" yes
 function install_skype {
      run dnf config-manager --add-repo https://repo.skype.com/data/skype-stable.repo
      run dnf -y install skypeforlinux
 }
+
+
 question install_devtools "Software development tools are for programmers and hackers. " no
 function install_devtools {
 
