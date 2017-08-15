@@ -799,7 +799,7 @@ function install_virtualbox {
     run dnf -y remove VirtualBox
     run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
 
-    run curl http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo > /etc/yum.repos.d/virtualbox.repo
+    run wget -O /etc/yum.repos.d/virtualbox.repo http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
     run dnf -y install VirtualBox-5.1
     run usermod -a -G vboxusers "$USER"
     
