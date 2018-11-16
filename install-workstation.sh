@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Workstation installer script for Fedora (23 and up) Latest fedora is 29.
+# Workstation installer script for the Latest fedora (29).
 #
 # D250 Laboratories / D250.hu 2014-2016
 # Author: István király
@@ -602,13 +602,8 @@ function install_basic_system_tools {
 }
 
 
-question install_browsers "Google chrome, Flash player, java support is also part of a a proper desktop workstation, even though its propreitary software." yes
+question install_browsers "Install Google chrome, firefox, midori " yes
 function install_browsers {
-    # flash player
-    run dnf -y install http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm  http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
-    run rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
-    run dnf -y update
-    run dnf -y install flash-plugin nspluginwrapper alsa-plugins-pulseaudio libcurl
 
     #install google chrome repository
     set_file /etc/yum.repos.d/google-chrome.repo '[google-chrome]
@@ -626,6 +621,16 @@ gpgcheck=1
 gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
 '
     run dnf -y install google-chrome-stable firefox midori java java-plugin
+}
+
+question install_browser_plugins "Java support is also part of a a proper desktop workstation, even though its propreitary software." yes
+function install_browser_plugins {
+    # flash player
+    run dnf -y install http://linuxdownload.adobe.com/adobe-release/adobe-release-i386-1.0-1.noarch.rpm  http://linuxdownload.adobe.com/adobe-release/adobe-release-x86_64-1.0-1.noarch.rpm
+    run rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-adobe-linux
+    run dnf -y update
+    ##  nspluginwrapper removed @fedora29
+    run dnf -y install flash-plugin alsa-plugins-pulseaudio libcurl
 
     ## install Oracle java 7
 
@@ -668,6 +673,8 @@ gpgkey=https://dl-ssl.google.com/linux/linux_signing_key.pub
     ## TODO java 8 https://www.if-not-true-then-false.com/2014/install-oracle-java-8-on-fedora-centos-rhel/
 }
 
+
+
 question install_alternative_lightweight_desktop_xfce "XFCE? - Lightweight desktops with some traditional look might come handy on a less powerful computer. XFCE and LXDE are such Desktop enviroments." no
 function install_alternative_lightweight_desktop_xfce {
     run dnf -y install @XFCE
@@ -694,11 +701,11 @@ function install_kingsoft_office {
      MACHINE_TYPE="$(uname -m)"
     if [[ "${MACHINE_TYPE}" == 'x86_64' ]] 
     then
-          run wget "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.x86_64.rpm"
-          run dnf -y install wps-office-10.1.0.5672-1.a21.x86_64.rpm 
+          run wget "http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office-10.1.0.6757-1.x86_64.rpmm"
+          run dnf -y install wps-office-10.1.0.6757-1.x86_64.rpm
     else
-          run wget "http://kdl.cc.ksosoft.com/wps-community/download/a21/wps-office-10.1.0.5672-1.a21.i686.rpm"
-          run dnf -y install wps-office-10.1.0.5672-1.a21.i686.rpm
+          run wget "http://kdl.cc.ksosoft.com/wps-community/download/6757/wps-office-10.1.0.6757-1.i686.rpm"
+          run dnf -y install wps-office-10.1.0.6757-1.i686.rpm
     fi
 }
 
@@ -733,7 +740,7 @@ function install_media_editors {
 question install_media_producer_tools "Compose multitrack soundtracks with Ardour,.. use mixxx to create your mixes." no
 function install_media_producer_tools {
  
-    run dnf -y install ardour3
+    run dnf -y install ardour5
     run dnf -y install qjackctl a2jmidid alsa-tools ffado alsa-plugins-jack jack-audio-connection-kit-dbus vlc-plugin-jack pulseaudio-module-jack
     run dnf -y install mixxx
 }
@@ -775,13 +782,11 @@ function install_devtools {
     ## TODO make it more complete
 
     # The generic Development tools compilation from fedora.
-    run dnf -y groupinstall "Development Tools"
+    run 'dnf -y groupinstall "Development Tools"'
 
     # some more enviroments
-    run dnf -y install netbeans
     run dnf -y install eclipse
     run dnf -y install geany
-    run dnf -y install cssed
     run dnf -y install anjuta
 
     # Networking development
@@ -805,6 +810,14 @@ function install_devtools {
 
 question install_virtualbox "Use virtualbox to emulate windows or any other operating system. (please reboot first, if you have update the kernel.)" no
 function install_virtualbox { 
+    
+    run dnf -y install VirtualBox
+    
+}
+
+## diabled and not maintained for now.
+#question install_virtualbox_oracle "Use virtualbox to emulate windows or any other operating system. (please reboot first, if you have update the kernel.)" no
+function install_virtualbox_oracle {   
 
     run dnf -y remove VirtualBox
     run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
@@ -824,7 +837,7 @@ function install_virtualbox {
 
 }
 
-question install_steam "Steam is a gaming platform. Installs rpmfusion nvidia drivers as well."
+question install_steam "Steam is a gaming platform. Installs rpmfusion nvidia drivers as well." no
 function install_steam {
 
     add_rpmfusion
