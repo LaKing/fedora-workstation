@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Workstation installer script for Fedora (23 and up) Latest fedora is 26.
+# Workstation installer script for Fedora (23 and up) Latest fedora is 29.
 #
 # D250 Laboratories / D250.hu 2014-2016
 # Author: István király
@@ -527,6 +527,10 @@ fi
 
 function set_autologin_for_first_user {
 
+passwd -d "$USER"
+
+if [[ -f /etc/gdm/custom.conf ]]
+then
 ## for GDM 
 set_file /etc/gdm/custom.conf '
 # GDM configuration storage
@@ -547,7 +551,10 @@ AutomaticLogin='"$USER"'
 [debug]
 
 '
+fi
 
+if [[ -f /etc/lightdm/lightdm.conf ]]
+then
 ## for lightdm
 set_file /etc/lightdm/lightdm.conf '
 [LightDM]
@@ -568,10 +575,13 @@ autologin-user='"$USER"'
 [VNCServer]
 
 '
+fi
 
+if [[ -f /etc/lxdm/lxdm.conf ]]
+then
 ## for lxdm
     sed_file /etc/lxdm/lxdm.conf "# autologin=dgod" "autologin=$USER"
-
+fi
 ntc "Autologin set for $USER"
 } 
 
