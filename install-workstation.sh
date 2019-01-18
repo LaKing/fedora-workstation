@@ -300,7 +300,7 @@ function finalize {
      # run this graphical tool at the end
      if [ -z "$USER" ]; then echo "No user to tune gnome, skipping question." >> "$LOG"; else
         ntc "Starting the gnome Tweak tool."
-        su "$USER" -c gnome-tweak-tool
+        su "$USER" -c gnome-tweaks
      fi
     fi 
   done
