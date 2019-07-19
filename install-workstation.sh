@@ -2,7 +2,7 @@
 #
 # Workstation installer script for the Latest fedora (29).
 #
-# D250 Laboratories / D250.hu 2014-2016
+# D250 Laboratories / D250.hu 2014-2019
 # Author: István király
 # LaKing@D250.hu
 # 
