@@ -820,7 +820,7 @@ function install_virtualbox {
 function install_virtualbox_oracle {   
 
     run dnf -y remove VirtualBox
-    run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon
+    run dnf -y install kernel binutils gcc make perl patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon
 
     run wget -O /etc/yum.repos.d/virtualbox.repo http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
     run dnf -y install VirtualBox-6.1
