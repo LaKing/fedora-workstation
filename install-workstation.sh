@@ -820,10 +820,10 @@ function install_virtualbox {
 function install_virtualbox_oracle {   
 
     run dnf -y remove VirtualBox
-    run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms
+    run dnf -y install kernel binutils gcc make patch libgomp glibc-headers glibc-devel kernel-headers kernel-devel dkms qt5-qtx11extras libxkbcommon
 
     run wget -O /etc/yum.repos.d/virtualbox.repo http://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
-    run dnf -y install VirtualBox-5.1
+    run dnf -y install VirtualBox-6.1
     run usermod -a -G vboxusers "$USER"
     
     if [ "$(rpm -qa kernel |sort -V |tail -n 1)" == "kernel-$(uname -r)" ]
