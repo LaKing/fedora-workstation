@@ -808,7 +808,7 @@ function install_devtools {
 
 }
 
-question install_virtualbox "Use virtualbox to emulate windows or any other operating system. (please reboot first, if you have update the kernel.)" no
+question install_virtualbox "Use virtualbox to emulate any OS. (please reboot first, if you have update the kernel, and don't use UEFI secure boot.)" no
 function install_virtualbox { 
     
     run dnf -y install VirtualBox
