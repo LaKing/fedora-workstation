@@ -2,12 +2,12 @@ if [ -z "$USER" ]
 then 
      ntc "No autologin question."
 else
-     question set_autologin_for_first_user "User $USER can be enabled to be logged in automatically, without requesting a password when the system is started." no
+     question set_autologin_for_first_user "User $USER can be enabled to be logged in automatically, without requesting a password when the system is started. Useful for single-user configurations." no
 fi
 
 function set_autologin_for_first_user {
 
-passwd -d "$USER"
+passwd --delete "$USER"
 
 if [[ -f /etc/gdm/custom.conf ]]
 then
