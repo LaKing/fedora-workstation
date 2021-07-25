@@ -1,5 +1,6 @@
-## fedora-install-workstation
-Asks some questions, and runds the corresponding installs. Compatible with fedora 25.
+## Fedora workstation installer
+Scripts to help your workstation getting running fast.
+It asks some questions, and runds the corresponding installs then automatically. 
 
 ## Prepare
 It is recommended to get your system up to date before running the installer.
@@ -9,8 +10,11 @@ reboot
 ```
 ## Start with
 ```bash
-curl https://raw.githubusercontent.com/LaKing/fedora-workstation/master/install-workstation.sh > install-workstation.sh \
-&& bash install-workstation.sh
+curl https://codeload.github.com/LaKing/fedora-workstation/zip/refs/heads/master > fedora-workstation-installer.zip && \
+rm -fr fedora-workstation-master && \ 
+unzip fedora-workstation-installer.zip && \ 
+cd fedora-workstation-master && \
+bash install-workstation.sh
 ```
 
 ## Answer questions with yes or no - or leave the default value (capital letter)
